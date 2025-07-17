@@ -51,7 +51,6 @@ async function fetchLogs() {
         }
 
         logContainer.innerHTML = logs.map(log => {
-            // লোকেশন লিংক দেখানোর জন্য নতুন লজিক
             let locationDisplay;
             if (log.location.mapLink) {
                 locationDisplay = `<a href="${log.location.mapLink}" target="_blank" rel="noopener noreferrer" class="map-link">Google Maps</a>`;
@@ -61,13 +60,12 @@ async function fetchLogs() {
 
             return `
                 <div class="log-entry">
-                    <p><strong>🔗 Link ID:</strong> ${log.id}</p>
-                    <p><strong>🌐 IP Address:</strong> ${log.ip}</p>
+                    <p><strong>🔗 Link ID:</strong> ${log.linkId}</p> <p><strong>🌐 IP Address:</strong> ${log.ip}</p>
                     <p><strong>📍 Location:</strong> ${locationDisplay}</p>
                     <p><strong>📱 Device:</strong> ${log.device}</p>
                     <p><strong>🌐 Browser:</strong> ${log.browser}</p>
                     <p><strong>💻 OS:</strong> ${log.os}</p>
-                    <p><strong>🕒 Timestamp:</strong> ${log.timestamp} (Asia/Dhaka)</p>
+                    <p><strong>🕒 Timestamp:</strong> ${log.timestamp}</p>
                 </div>
             `;
         }).join('');

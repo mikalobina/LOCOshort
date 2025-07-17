@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting - LOCOShort</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Redirecting</h2>
+        <p id="message">Please wait while we process your request... 🚀</p>
+    </div>
+
+    <script>
+        (function() {
+            const linkId = window.location.pathname.substring(1);
+            const messageElement = document.getElementById('message');
+
+            function trackAndRedirect(locationData = {}) {
+                 fetch(`/track/${linkId}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(locationData)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.originalUrl) {
+                        window.location.replace(data.originalUrl);
+                    } else {
+                        messageElement.textContent = 'Error: Could not find the destination link.';
+                    }
+                })
+                .catch(err => {
+                    console.error('Redirection Error:', err);
+                    messageElement.textContent = 'An error occurred. Unable to redirect.';
+                });
+            }
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        trackAndRedirect({
+                            latitude: position.coords.latitude,
+                            longitude: position.coords.longitude
+                        });
+                    },
+                    (error) => {
+                        console.error("Geolocation error:", error.message);
+                        trackAndRedirect({}); 
+                    },
+                    { 
+                        enableHighAccuracy: true, 
+                        timeout: 10000, 
+                        maximumAge: 0 
+                    }
+                );
+            } else {
+                trackAndRedirect({});
+            }
+        })();
+    </script>
+</body>
+</html>

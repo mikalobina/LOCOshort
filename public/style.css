@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+:root {
+  --background: #f4f4f5;
+  --card-bg: #ffffff;
+  --text-primary: #18181b;
+  --text-secondary: #71717a;
+  --border-color: #e4e4e7;
+  --primary-btn-bg: #18181b;
+  --primary-btn-text: #ffffff;
+  --border-radius: 12px;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--text-primary);
+  padding: 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.login-container {
+    max-width: 450px;
+}
+
+h1, h2 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.75rem; }
+
+.login-header p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.form-group {
+  display: flex;
+  gap: 0.75rem;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="url"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--background);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-btn-bg);
+  box-shadow: 0 0 0 3px rgba(24, 24, 27, 0.1);
+}
+
+/* Button Styles */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--primary-btn-bg);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+form .btn {
+  background-color: var(--primary-btn-bg);
+  color: var(--primary-btn-text);
+}
+form .btn:hover {
+  background-color: #3f3f46;
+  border-color: #3f3f46;
+}
+.btn-refresh, .btn-logout, #copy-btn {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+}
+.btn-refresh:hover, .btn-logout:hover, #copy-btn:hover {
+  background-color: var(--background);
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.result-container, #log-container {
+  margin-top: 2rem;
+}
+
+.result-container {
+  background: var(--background);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+}
+.result-container h3 {
+  margin: 0 0 1rem 0;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+.input-group input {
+    font-weight: 500;
+    background-color: var(--card-bg) !important;
+}
+
+#log-container {
+  text-align: left;
+  max-height: 45vh;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+#log-container::-webkit-scrollbar { width: 6px; }
+#log-container::-webkit-scrollbar-track { background: transparent; }
+#log-container::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 10px; }
+
+.log-entry {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+.log-entry p {
+  margin: 0.5rem 0;
+  word-break: break-all;
+  color: var(--text-secondary);
+}
+.log-entry strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+.map-link {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+}
+.map-link:hover {
+    text-decoration: underline;
+}
+
+footer {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+footer small, footer a {
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+footer a:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  .dashboard-header, .form-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

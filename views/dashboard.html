@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - LOCOShort</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-header">
+            <h2>LOCOShort Dashboard</h2>
+            <div>
+                <button id="refreshBtn" class="btn btn-refresh">🔁 Refresh</button>
+                <a href="/logout" class="btn btn-logout">🚪 Logout</a>
+            </div>
+        </div>
+
+        <form action="/create" method="POST">
+            <div class="form-group">
+                <input type="url" name="url" placeholder="Enter a long URL to shorten" required>
+                <button type="submit" class="btn">Shorten</button>
+            </div>
+        </form>
+
+        <div id="short-link-result" class="result-container" style="display: none;">
+            <h3>🎉 Your Short Link is Ready!</h3>
+            <div class="input-group">
+                <input type="text" id="new-link-input" readonly>
+                <button id="copy-btn" class="btn">📋 Copy</button>
+            </div>
+        </div>
+
+        <div id="log-container">
+            </div>
+        
+        <footer>
+             <small>Developed with ❤️ by <a href="https://www.facebook.com/M.Shuddho" target="_blank">Umayer Rahaman</a></small>
+        </footer>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>
